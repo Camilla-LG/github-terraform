@@ -44,10 +44,10 @@
 
         - name: 'Check last commit message'
           id: commit
-          run: echo "::set-output name=message::$(git log --format=%B -n 1)"
+          run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
         - name: 'Conditionally run Terraform action'
           run: |
-            if [[ "${{ steps.commit.outputs.message }}" == *"destroy"* ]]; then
+            if [[ "$message" == *"destroy"* ]]; then
               terraform destroy -auto-approve
             else
               terraform apply -auto-approve
