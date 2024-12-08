@@ -44,13 +44,6 @@
         - name: Checkout code
           uses: actions/checkout@v4
 
-        - name: Debug repository structure
-          run: |
-            echo "Current working directory:"
-            pwd
-            echo "Listing all files:"
-            ls -alR
-
         # Runs a single command using the runners shell
         - name: 'Terraform init'
           id: init
@@ -67,7 +60,7 @@
           run: echo "::set-output name=message::$(git log --format=%B -n 1)"
         - name: 'Conditionally run Terraform action'
           run: |
-            if [[ "${{ steps.commit.output.message }}" == *"destroy"* ]]; then
+            if [[ "${{ steps.commit.outputs.message }}" == *"destroy"* ]]; then
               terraform destroy -auto-approve
             else
               terraform apply -auto-approve
