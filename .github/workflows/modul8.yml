@@ -46,6 +46,11 @@
           id: commit
           run: |
             echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+
+        - name: Debug commit message
+          run: |
+            echo "Commit message: $message"
+
   
         - name: Conditionally run Terraform action
           run: |
