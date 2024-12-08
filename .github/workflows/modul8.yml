@@ -7,7 +7,7 @@
   # Triggers the workflow on push or pull request events but only for the main brancg
     push: 
       paths: 
-      - 'course Modul6\github-terraform\Modul8'
+      - 'course Modul6/github-terraform/Modul8/**'
 
     # Allows you to run this workflow manually form the Actions tab
     workflow_dispatch:
