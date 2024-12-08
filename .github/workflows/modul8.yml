@@ -42,10 +42,12 @@
           run: terraform plan
           working-directory: ${{ env.WORKING_DIR }}
 
-        - name: 'Check last commit message'
+        - name: Get last commit message
           id: commit
-          run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
-        - name: 'Conditionally run Terraform action'
+          run: |
+            echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+  
+        - name: Conditionally run Terraform action
           run: |
             if [[ "$message" == *"destroy"* ]]; then
               terraform destroy -auto-approve
