@@ -67,7 +67,7 @@
           run: echo "::set-output name=message::$(git log --format=%B -n 1)"
         - name: 'Conditionally run Terraform action'
           run: |
-            if [[ "${{ steps.commt.output.message }}" == *"destroy"* ]]; then
+            if [[ "${{ steps.commit.output.message }}" == *"destroy"* ]]; then
               terraform destroy -auto-approve
             else
               terraform apply -auto-approve
