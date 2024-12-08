@@ -1,13 +1,13 @@
 variable "rg_name" {
   type        = string
   description = "Name of the resource group"
-  default = "rg-web"
+  default = "rg-webcmlg"
 }
 
 variable "rg_location" {
   type        = string
   description = "Location of the resource group"
-  default = "saweb"
+  default = "sawebcmlg"
 }
 
 variable "sa_name" {
