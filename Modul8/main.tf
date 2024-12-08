@@ -55,4 +55,4 @@ output "primary_web_endpoint" {
 
 
 #Destroy - test of Github Actions destroy option via commit message
-#attempt nr 532526
+#attempt nr 532528
