@@ -68,7 +68,7 @@
         - name: 'Conditionally run Terraform action'
           run: |
             if [[ "${{ steps.commt.output.message }}" == *"destroy"* ]]; then
-              terraform festroy -auto-approve
+              terraform destroy -auto-approve
             else
               terraform apply -auto-approve
             fi
