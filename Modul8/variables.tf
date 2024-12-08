@@ -7,12 +7,12 @@ variable "rg_name" {
 variable "rg_location" {
   type        = string
   description = "Location of the resource group"
-  default = "sawebcmlg"
 }
 
 variable "sa_name" {
   type        = string
   description = "Name of the storage account"
+  default = "sawebcmlg"
 }
 
 variable "index_document" {
