@@ -1,8 +1,8 @@
 locals {
   workspaces_suffix = terraform.workspace == "default" ? "" : "${terraform.workspace}"
 
-  rg_name = "default" ? "${var.rg_name}" : "${var.rg_name}-${local.workspaces_suffix}"
-  sa_name = "default" ? "${var.sa_name}" : "${var.sa_name}${local.workspaces_suffix}"
+  rg_name = terraform.workspace == "default" ? "${var.rg_name}" : "${var.rg_name}-${local.workspaces_suffix}"
+  sa_name = terraform.workspace == "default" ? "${var.sa_name}" : "${var.sa_name}${local.workspaces_suffix}"
   web_suffix = "<h1>${terraform.workspace}</h1>"
 }
 
@@ -26,7 +26,7 @@ resource "azurerm_storage_account" "sa" {
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
-  account_replication_type = "LRS"
+  account_replication_type = "GRS"
 
   static_website {
     index_document = var.index_document
