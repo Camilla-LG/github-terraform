@@ -54,4 +54,4 @@ output "primary_web_endpoint" {
 }
 
 
-#Destroy - test of Actions detroy option
+#Destroy - test of Actions destroy option
